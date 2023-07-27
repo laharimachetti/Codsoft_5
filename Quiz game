@@ -1,0 +1,66 @@
+import random
+
+# Quiz questions with their answer choices and correct answers
+quiz_questions = [
+    {
+        "question": "What is the capital of Italy?",
+        "choices": ["A. London", "B. Paris", "C. Rome", "D. Berlin"],
+        "correct_answer": "C"
+    },
+    {
+        "question": "What is the largest planet in our solar system?",
+        "choices": ["A. Venus", "B. Jupiter", "C. Saturn", "D. Mars"],
+        "correct_answer": "B"
+    },
+    {
+        "question": "Who created Mickey Mouse?",
+        "choices": ["A. Walt Disney", "B. Vincent van Gogh", "C. Walter Elias Disney ", "D. Claude Monet"],
+        "correct_answer": "A"
+    }
+]
+
+# Display the welcome message and rules
+print("Welcome to the Quiz Game!")
+print("You will be presented with multiple-choice questions.")
+print("Choose the correct answer from the given options.")
+print("Let's get started!")
+
+score = 0
+
+# Present quiz questions
+for question in quiz_questions:
+    print("\n" + question["question"])
+    random.shuffle(question["choices"])
+    for choice in question["choices"]:
+        print(choice)
+    user_answer = input("Enter your answer (A, B, C, or D): ").upper()
+
+    # Evaluate the user's answer
+    if user_answer == question["correct_answer"]:
+        print("Correct!")
+        score += 1
+    else:
+        print("Incorrect.")
+        print("The correct answer is", question["correct_answer"])
+
+# Calculate the final score
+total_questions = len(quiz_questions)
+percentage = (score / total_questions) * 100
+
+# Display the final results
+print("\nQuiz Completed!")
+print("Your Score:", score, "/", total_questions)
+print("Percentage:", percentage, "%")
+
+# Ask the user if they want to play again
+play_again = input("Do you want to play again? (yes/no): ").lower()
+
+if play_again == "yes":
+    print("\n--- Let's play again! ---")
+    # Reset the score and shuffle the questions
+    score = 0
+    random.shuffle(quiz_questions)
+    # Restart the quiz
+    # ...
+else:
+    print("Thank you for playing! Goodbye!")
